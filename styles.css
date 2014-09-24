@@ -1,0 +1,706 @@
+
+
+/* BASE STYLES */
+
+body {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  line-height: 25px;
+  text-shadow: none;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1.2em;
+  font-weight: 400;
+  color: #222;
+  background: #fff;
+}
+
+a {
+  color: #c24209;
+}
+
+#event-calendar {
+  width: 920px;
+  min-height: 600px;
+  margin: 50px auto 0;
+}
+
+.demo-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Button Class */
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  color: #fff;
+  background: #c24209;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Powered By */
+
+footer {
+  padding: 20px;
+  background: #222;
+}
+
+a.nightout-events-logo {
+  display: block;
+  margin: 0 auto;
+  background: transparent url('nightout-events.png') 0 0 no-repeat;
+  width: 270px;
+  height: 25px;
+}
+
+/* Loader */
+
+@-webkit-keyframes loader {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px !important;
+  height: 50px !important;
+  z-index: 100;
+  border-top: 4px solid #21759b;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-animation: loader 0.65s 0 infinite linear;
+  -moz-animation: loader 0.65s 0 infinite linear;
+  -ms-animation: loader 0.65s 0 infinite linear;
+  -o-animation: loader 0.65s 0 infinite linear;
+  animation: loader 0.65s 0 infinite linear;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+
+/* Responsive CLNDR CSS */
+
+.cal-container.loading #calendar {
+  opacity: .5;
+}
+
+.cal-container.loading .loader {
+  display: block;
+}
+
+.responsive-calendar {
+  width: 100%;
+  background: #FFEAB9;
+}
+
+.month-year {
+  width: 100%;
+  padding: 10px 0;
+  height: 30px;
+  margin-bottom: 3px;
+  background: rgba(0,0,0,.10);
+}
+
+.month {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  display: inline-block;
+  margin: 0 20px;
+  text-align: center;
+  width: 160px;
+}
+
+.month .month-name {
+  text-transform: uppercase;
+}
+
+.calendar-controls {
+  margin: 0 auto;
+  width: 255px;
+}
+
+.calendar-controls .prev,
+.calendar-controls .next {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 24px;
+  color: #9c4a26;
+  text-decoration: uppercase;
+  padding: 5px;
+}
+
+#calendar,
+.calendar-body,
+.header-days {
+  width: 100%;
+}
+
+.header-days {
+
+}
+
+.calendar-body {
+
+}
+
+.clndr-today-button {
+  position: relative;
+  top: -2px;
+}
+
+.date,
+.header-day {
+  position: relative;
+  float: left;
+  display: block;
+  width: 14.28%;
+  min-height: 100px;
+  background: transparent;
+  color: #666;
+  text-align: left;
+  border: 1px solid rgb(228, 197, 133);
+  border-width: 0 1px 1px 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.date:nth-child(7n + 7) {
+  border-right: 0;
+}
+
+.header-day {
+  text-align: center;
+  height: auto;
+  padding: 5px 0;
+  color: #fff;
+  background: #C66B44;
+  min-height: 0;
+}
+
+.date-content {
+  padding: 0;
+  min-height: 150px;
+  color: #000;
+  overflow: hidden;
+}
+
+.date-content img {
+  width: 132px;
+}
+
+.cal-poster {
+  display: none;
+  width: 60px;
+}
+
+.cal-poster img {
+  width: 60px;
+  height: auto;
+}
+
+.cal-title {
+  color: #000;
+  font-size: 12px;
+  line-height: 12px;
+  margin: 0;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.event-start-time {
+  font-size: 12px;
+}
+
+.cal-link {
+  display: block;
+  color: #c24209;
+  padding: 10px;
+  border: 1px solid;
+  margin: 40px 10px 10px 10px;
+  text-decoration: none;
+  border: 1px solid #ECCB81;
+  background-color: #FFE2A3;
+}
+
+.cal-teaser {
+  display: none;
+}
+.date-number {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  position: absolute;
+  top: -2px;
+  right: 1px;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.date.today .date-number {
+  background: #9c4a26;
+  color: #fff;
+}
+
+
+.date.today a {
+  color: #000;
+}
+
+.cal-list-view .date.today a.cal-title {
+
+}
+
+.date.past .date-number {
+  color: #555;
+  background: rgba(255,255,255,0.5);
+}
+
+.date.adjacent-month .date-number {
+  color: #555;
+  background: rgba(0,0,0,.10);
+}
+
+.clndr-today-button {
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cal-toggles {
+  float: right;
+}
+
+.cal-toggles a {
+  display: inline-block;
+  padding: 17px 17px 12px;
+  color: #747474;
+}
+
+.cal-toggles a.active {
+  background: #9c4a26;
+  color: #fff;
+}
+
+.cal-content .btn {
+  display: none;
+}
+
+.cal-event-price {
+  display: none;
+  font-size: 18px;
+  margin-left: 20px;
+  position: relative;
+  top: 2px;
+}
+
+.cal-event-date {
+
+}
+
+
+/* =============================================================================
+   List view
+   ========================================================================== */
+
+
+.cal-list-view .calendar-body {
+  border: 0;
+}
+.cal-list-view .header-day,
+.cal-list-view .day {
+  display: none;
+}
+
+.cal-list-view .event {
+  display: block;
+}
+.cal-list-view .date {
+  float: none;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  border: 0;
+  font-size: 12px;
+}
+
+.cal-list-view .date.past {
+  display: none;
+}
+
+.cal-list-view .date.adjacent-month {
+  background: transparent;
+}
+
+.cal-list-view .cal-content {
+  float: left;
+}
+.cal-list-view .date.today {
+  background: transparent;
+}
+.cal-list-view .cal-poster {
+  display: block;
+  float: left;
+  margin-right: 20px;
+}
+
+.cal-list-view .date-number {
+  padding: 10px;
+  position: relative;
+  display: block;
+  top: auto;
+  left: auto;
+  right: auto;
+  font-size: 25px;
+  text-align: left;
+}
+
+.cal-list-view .date.today .date-number {
+
+}
+
+.cal-list-view .date-content {
+  padding: 0;
+  height: auto;
+}
+
+.cal-list-view .cal-event .calendar-link {
+	float:right;
+	display:none;
+}
+
+
+.cal-list-view .cal-event {
+	border-collapse: collapse;
+	float: left;
+  width: 100%;
+  height: 280px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 20px;
+	padding: 0;
+  background: rgba(255,255,255,.5);
+}
+
+.cal-list-view .cal-link {
+  display: inline-block;
+  display: -moz-inline-stack;
+  *display: inline;
+  zoom: 1;
+  padding: 10px;
+  margin: 10px 0;
+  color: #fff !important;
+  background: #c24209;
+  text-decoration: none;
+}
+
+.cal-list-view .date.today .cal-event {
+
+}
+
+.cal-list-view .cal-content {
+	float:left;
+	width: 65%;
+	max-width: 500px;
+	margin: 1em 0;
+}
+
+.cal-list-view .cal-content h5 {
+  margin: 0 0 10px;
+}
+.cal-list-view .cal-poster img {
+	height: 280px;
+	width: auto;
+}
+.cal-list-view .date-content img {
+  width: 186px;
+	overflow: hidden;
+	background: #ddd;
+	float:left;
+	margin:0 20px 0 0;
+}
+.cal-list-view .cal-title {
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+.cal-list-view .event-start-time {
+  font-size: 20px;
+}
+
+.cal-list-view .cal-teaser {
+  display: block;
+  font-size: 15px;
+}
+
+.cal-list-view .cal-event-date {
+  font-size: 18px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cal-list-view .cal-event  .dates {
+  background: #111;
+  color: #fff;
+}
+
+.cal-list-view .cal-event-price {
+  display: inline-block;
+}
+
+/* RESPNSIVE * /
+
+    /* CLNDR */
+
+@media only screen and (max-width : 678px) {
+  body #event-calendar {
+    width: 100%;
+  }
+  body .loader {
+    top: 35%;
+  }
+  .responsive-calendar {
+    min-height: 0;
+    margin: 0;
+  }
+
+  .calendar-controls .month {
+    width: 260px;
+  }
+
+  .cal-container {
+    width: 100%;
+  }
+
+  .date,
+  .header-day {
+    height: 40px;
+  }
+
+  .date .cal-content {
+    display: none;
+  }
+
+  .day.event {
+    background: rgba(65, 187, 161, 0.25);
+  }
+  .date.past.event {
+    background: rgba(65, 187, 161, 0.15);
+  }
+
+  .header-day {
+    height: auto;
+    font-size: 12px;
+  }
+
+  .cal-toggles,
+  .calendar-controls {
+    float: none;
+    margin: 0;
+  }
+
+  .calendar-controls {
+    text-align: center;
+  }
+
+  .cal-toggles .clndr-today-button {
+    display: none;
+  }
+
+  .month-year,
+  .cal-toggles {
+    margin: 0;
+  }
+
+  .cal-toggles a {
+    float: left;
+    width: 50%;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .month-year .month {
+    width: 150px;
+  }
+
+  .cal-list-view .date {
+    height: auto;
+    background: transparent;
+    margin-bottom: 10px;
+  }
+
+  .cal-list-view .cal-content {
+    display: block;
+    width: 180px;
+    float: left;
+  }
+
+  .cal-list-view .cal-title {
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .cal-list-view .date-number {
+    text-align: center;
+  }
+
+  .cal-list-view .cal-event {
+    float: none;
+    width: auto;
+    min-height: 193px;
+    height: auto;
+    border-bottom: 1px solid #555;
+    background: rgba(0,0,0,.14);
+  }
+
+  .cal-list-view .cal-poster,
+  .cal-list-view .cal-poster img {
+    width: 157px;
+    height: auto;
+  }
+
+  .cal-list-view .cal-event-date {
+    font-size: 12px;
+  }
+  .cal-list-view .cal-event-price {
+    display: block;
+    float: left;
+    top: auto;
+    font-size: 15px;
+    width: 180px;
+    margin: 10px auto;
+    text-align: center;
+  }
+  body a.nightout-events-logo {
+    width: 270px;
+  }
+}
+
+
+/* NIGHTOUT EVERWHERE */
+
+#nightout-everywhere-overlay {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.85;
+  z-index: 100 !important;
+}
+
+#nightout-everywhere-wrapper {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  margin-left: -300px;
+  width: 620px;
+  height: 620px;
+  z-index: 9999 !important;
+  background: #fff url('loading-everywhere.gif') center center no-repeat;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.25s;
+  -moz-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+}
+
+#nightout-everywhere-powered-by {
+  display: block;
+  position: relative;
+  float: right;
+  width: 195px;
+  height: 15px;
+  outline-width: 0;
+  margin: 10px 14px;
+  background:
+    transparent
+    url(data:image/png;base64,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)
+    left
+    center
+    no-repeat;
+}
+#nightout-everywhere-frame {
+  display: block;
+  width: 100%;
+  height: 620px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: transparent;
+  border: 1px solid rgb(0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.156863) 0px 0px 0px 3px;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.25s;
+  -moz-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+}
+
+#nightout-close-everywhere {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  right: -10px;
+  top: -10px;
+  width: 22px;
+  height: 22px;
+  background:
+    transparent
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZdJREFUeNqslKFywkAQhpdQnSkeAa4Tlb4AYNBtB1VMQSEBkZm6lidoK1FpTVym9RhwlVGRoSIO0QxP0P3Tu0wacscA/Wd2LreXfNnbu90KKdRsNgc8XLHZbI3c0pItYHtZr9dfZd9WSmAdHtwCSKVXtinDEyWUgRMenugwIdobBgc70COBUoj0UqbDyG35WCB0zvYuJ4YYH+h02eJwyeAHnG6n7K1ut0umaf7xWZa148tpLCO9K1vFx/P5nDzPyyDwYQ6/JtpGtVar3Zddn81mQ/V6ndrtNrVaLYqiiFzX/Q1nPE7XFVqd6ZLkOE469nq9NMLtdkv9fp/CMNTm1th3yWV0UBzHqe2TIS4vqfIqI1wsFtlcc1BpMSihyCcAELY8Go3I9/0MrFGAnK7YBsUVbBMQmMwhcoyoNTlNUK4VUVHfoipO1Yyhj7KiZv8ARP0/46GazpLkk+8rKuviBOit7FRGzjkUzfcYDRn4oWvS6FaTA3opgEtt5xfghuhc14oDxI7e0PmLXV8JLfzALoCDMlBePwIMAHgxm67nJOWiAAAAAElFTkSuQmCC)
+    left
+    center
+    no-repeat;
+}
+#nightout-close-everywhere:hover, #nightout-close-everywhere:active {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+  #nightout-everywhere-wrapper {
+    left: 50%;
+    top: 5%;
+    width: 300px;
+    height: 480px;
+    margin-left: -150px;
+  }
+  #nightout-everywhere-frame {
+    height: 480px;
+  }
+  #nightout-everywhere-powered-by {
+    float: none;
+    margin: 10px auto;
+  }
+}

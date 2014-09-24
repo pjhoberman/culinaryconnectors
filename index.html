@@ -1,0 +1,151 @@
+
+<script src="js/vendor/jquery-1.11.0.min.js"></script>
+<script src="js/vendor/moment-2.2.1.js"></script>
+<script src="js/vendor/underscore.js"></script>
+<script src="js/clndr.js"></script>
+<script type="text/javascript" src="https://nightout.com/everywhere.js"></script>
+
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+
+
+  <section id="event-calendar">
+
+  <h1 class="demo-title">Upcoming Events</h1>
+  <div class="cal-container loading cf">
+    <div class="loader">Loading...</div>
+    <div class="cal1"></div>
+  </div>
+
+
+  <script type="text/template" id="calendar-responsive">
+    <div class="responsive-calendar">
+        <div class="month-year cf">
+	    	  <div class="calendar-controls">
+            <a href="#prev" class="prev clndr-previous-button">&laquo;</a>
+            <span class="month"><span class="month-name"><%= month %></span> - <%= year %></span>
+            <a href="#next" class="next clndr-next-button">&raquo;</a>
+          </div>
+        </div>
+
+        <div id="calendar" class="cf">
+
+          <table class="calendar-body">
+
+            <tr class="header-days">
+              <% _.each(daysOfTheWeek, function(day) { %>
+                <td class="header-day"><%= day %></td>
+              <% }); %>
+            </tr>
+
+
+
+            <% weeks = sliceArray(days, 7) %>
+            <% _.each(weeks, function(week) { %>
+            <tr>
+
+            <% _.each(week, function(day) { %>
+              <td class="<%= day.classes %> date cf">
+                <div class="date-content cf">
+
+                  <div class="date-number"><%= day.day %></div>
+                  <% _.each(day.events, function(event) { %>
+
+                    <div class="cal-event cf">
+                        <div class="cal-content">
+
+                          <a href="<%= event.url %>" class="cal-link nightout-everywhere"><%= event.title %></a>
+                          </a>
+                        </div>
+                      </div>
+
+                  <% }); %>
+                </div>
+
+              </td>
+            <% }); %>
+            </tr>
+            <% }); %>
+
+          </table>
+        </div>
+    </div>
+
+
+
+  </script>
+
+  <footer><a href="http://events.nightout.com" class="nightout-events-logo" target="_blank"></a></footer>
+</section>
+
+  <script type="text/javascript">
+
+    function sliceArray(array, size) {
+      var p = [];
+      if (size > array.length) return this;
+      for (var i=Math.floor(array.length/size); i-->0; ) {
+        p[i]=array.slice(i*size, (i+1)*size);
+      }
+      return p;
+    };
+
+    function emebedReplace() {
+      $(".cal-link").each(function() {
+        var origUrl = $(this).attr("href");
+        var newUrl = origUrl.replace('nightout.com', 'embed.nightout.com');
+        $(this).attr("href", newUrl);
+      });
+    }
+
+
+    var calendars = {};
+    $(document).ready( function() {
+
+      var token = '7p5donemy5rxy9hdb0qwnm725yw8zs5';
+      var thisMonth = moment().format('YYYY-MM');
+
+
+      calendars.clndr1 = $('.cal1').clndr({
+        template: $('#calendar-responsive').html(),
+
+        multiDayEvents: {
+          startDate: 'start_time',
+          endDate:   'start_time' // HAXXXX
+        },
+        clickEvents: {
+          onMonthChange: function(month){
+            emebedReplace();
+            NightOutEverywhere.init();
+          },
+        showAdjacentMonths: true,
+        adjacentDaysChangeMonth: false
+
+
+        }
+      });
+
+      // bind both clndrs to the left and right arrow keys
+      $(document).keydown( function(e) {
+        if(e.keyCode == 37) {
+          // left arrow
+          calendars.clndr1.back();
+          calendars.clndr2.back();
+        }
+        if(e.keyCode == 39) {
+          // right arrow
+          calendars.clndr1.forward();
+          calendars.clndr2.forward();
+        }
+      });
+
+      $.getJSON('https://nightout.com/api/events?oauth_token='+token+'&organization_ids=215&details=preview&callback=?', function(data) {
+        $('.cal-container').removeClass('loading');
+        calendars.clndr1.setEvents(data);
+        emebedReplace();
+        NightOutEverywhere.init();
+      });
+
+
+
+    });
+  </script>
